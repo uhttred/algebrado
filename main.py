@@ -9,9 +9,9 @@ C = [ [6,4,2], [6,0,4], [-32,2,4] ]
 D = [ [2,6,2], [3,2,-4], [5,2,4] ]
 
 
-a = Mat(A,D)
+a = Mat(A,B)
 
 # print(a.soma()) # Soma as matrizes instaciadas
 
-print(a.soma(A,B)) #soma quantas matrizes forem passadas, mesma ordem necessaria
+print(a.soma(C,A)) #soma quantas matrizes forem passadas, mesma ordem necessaria
 

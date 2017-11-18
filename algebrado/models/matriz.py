@@ -39,7 +39,7 @@ class Mat:
 		else:
 			numMats = len(args)
 
-		if numMats > 0 and self.mesmaOrdem():
+		if numMats > 0 and self.mesmaOrdem(self, args, islist=True):
 
 			# Fazendo a matriz que sera retornada
 
@@ -60,17 +60,33 @@ class Mat:
 			return sMat
 
 		else:
-
 			# Verifica se todas as matrizes sao de mesma ordem
 
-			if self.mesmaOrdem():
+			if self.mesmaOrdem(self, self.matrizes, islist=True):
 				return self.soma(self, self.matrizes, islist=True)
 			return False
 
 	# Verifica se as matrizes são de mesma ordem
 
-	def mesmaOrdem(self, *args):
+	def mesmaOrdem(self, *args, islist=False):
+
+		# Verificnado se foram passados varios parametros ou um lista
+
+		if islist:
+			args = args[1]
+
+		# Pegando a orderm da primeira matriz
+
+		m = len(args[0]) 	# Linhas
+		n = len(args[0][0]) # Colunas
+
+		for k in range(len(args)):
+			for i in range(len(args[k])):
+				# Verificando a quantidade linhas e colunas em cada matriz
+				if( len(args[k]) != n or len(args[k][i]) != m ):
+					return False
 		return True
+
 
 
 
