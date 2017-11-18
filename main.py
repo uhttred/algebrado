@@ -1,6 +1,6 @@
 
 # Algebrado Models
-from algebrado.models.matriz import Mat 
+from algebrado.models.matriz import CalcMat 
 
 
 A = [ [3,4,2], [3,2,4], [3,2,4] ]
@@ -8,15 +8,22 @@ B = [ [4,4,2], [7,2,4], [3,4,5] ]
 C = [ [6,2,2], [6,0,4], [-32,2,4] ]
 D = [ [2,6,2], [3,2,-4], [5,2,4] ]
 
+# instacea 
 
-a = Mat(A,B,C)
+my = CalcMat(C)
 
-# print(a.soma()) # Soma as matrizes instaciadas
+# adciona matriz 
 
-print(a.soma()) #soma quantas matrizes forem passadas, mesma ordem necessaria
+my.addMatriz(A)
 
-a.delMatriz(a.matrizes[1])
+# Pega todas as matrizes cadastradas na instancia
 
-a.addMatriz(A)
+print(my.getMatrizes())
 
-print(a.getMatriz()[0])
+# Verifica se as matrizes sao de mesma ordem
+
+print(my.isSameOrder(A,B))
+
+# Verifica se uma matris e de ordem x
+
+print(my.isOrder( A, (3,3) ))

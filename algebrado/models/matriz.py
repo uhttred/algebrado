@@ -4,7 +4,7 @@
 	return Matriz 	
 """
 
-class Mat:
+class CalcMat:
 
 	# Matrizes
 
@@ -20,7 +20,7 @@ class Mat:
 
 	# Retorna a determinante, Matriz 2x2
 
-	def det2x2(self, A):
+	def getDet2x2(self, A):
 
 		matA = A[0][0] * A[1][1]
 		matB = A[0][1] * A[1][0]
@@ -29,7 +29,7 @@ class Mat:
 
 	# Soma de n Matrizes, Mesma ordem necessarias
 
-	def soma(self, *args , islist = False):
+	def getSoma(self, *args , islist = False):
 
 		# Pegando a quantidade de matrizes 
 
@@ -56,9 +56,7 @@ class Mat:
 				for i in range(m):
 					for j in range(n):
 						sMat[i][j] += args[k][i][j]
-
 			return sMat
-
 		else:
 			# Verifica se todas as matrizes sao de mesma ordem
 
@@ -68,7 +66,7 @@ class Mat:
 
 	# Verifica se as matrizes são de mesma ordem
 
-	def mesmaOrdem(self, *args, islist=False):
+	def isSameOrder(self, *args, islist=False):
 
 		# Verificnado se foram passados varios parametros ou um lista
 
@@ -87,6 +85,23 @@ class Mat:
 					return False
 		return True
 
+	# Verifica se a matriz e da ordem passada pelo parametro order = ( linha, coluna)
+
+	def isOrder(self, mat, order):
+
+		m = order[0] # Linha
+		n = order[1] # Coluna
+
+		if len(mat) == m:
+			for i in range(len(mat)): # N de linhas
+				if len(mat[i]) != n: # Verificando o n de colunas em cada linha
+					return False
+			return True
+		else: 
+			return False
+
+	# -------------------------------------------------------------------------------
+
 	# Eliminar matriz
 
 	def delMatriz(self, mat):
@@ -100,7 +115,7 @@ class Mat:
 
 	# Pegar todas matrizes
 
-	def getMatriz(self):
+	def getMatrizes(self):
 		return self.matrizes
 
 
