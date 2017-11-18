@@ -23,10 +23,37 @@ class CalcMat:
 
 	def getDet2x2(self, mat):
 
+		# Verificando a ordem
+
+		if not self.isOrder( mat, (2,2) ):
+			return False
+
 		p1 = mat[0][0] * mat[1][1]
 		p2 = mat[0][1] * mat[1][0]
 
 		return p1 - p2
+
+	# Retorna determinante, Matriz 3x3
+	# >>> getDet3x3(A)
+
+	def getDet3x3(self, mat):
+
+		# Verificando a ordem
+
+		if not self.isOrder(mat, (3,3)):
+			return False
+
+		p1 = ( ( mat[0][0] * mat[1][1] * mat[2][2] ) + 
+			   ( mat[2][0] * mat[0][1] * mat[1][2] ) + 
+			   ( mat[1][0] * mat[2][1] * mat[0][2] )
+			)
+		p2 = ( ( mat[2][0] * mat[1][1] * mat[0][2] ) + 
+			   ( mat[1][0] * mat[0][1] * mat[2][2] ) +
+			   ( mat[0][0] * mat[2][1] * mat[1][2] )
+			)
+
+		return p1 - p2
+
 
 	# Soma de n Matrizes, Mesma ordem necessarias
 	# >>> getSoma(A,B,C,..,N)
