@@ -18,16 +18,19 @@ class CalcMat:
 			for mat in args:
 				self.matrizes += [mat]
 
-	# Retorna a determinante, Matriz 2x2
+	# Retorna a determinante, Matriz 2x2 
+	# >>> getDet2x2(A)
 
-	def getDet2x2(self, A):
+	def getDet2x2(self, mat):
 
-		matA = A[0][0] * A[1][1]
-		matB = A[0][1] * A[1][0]
+		p1 = mat[0][0] * mat[1][1]
+		p2 = mat[0][1] * mat[1][0]
 
-		return matA - matB
+		return p1 - p2
 
 	# Soma de n Matrizes, Mesma ordem necessarias
+	# >>> getSoma(A,B,C,..,N)
+	# >>> getSoma() para somar todas as mat na instacia se de mesma ordem
 
 	def getSoma(self, *args , islist = False):
 
@@ -65,6 +68,8 @@ class CalcMat:
 			return False
 
 	# Verifica se as matrizes são de mesma ordem
+	# >>> isSameOrder(A,B,..,N)
+	# >>> isSmabeOrder( [ [],[],..,[], ] islist=True)
 
 	def isSameOrder(self, *args, islist=False):
 
@@ -86,8 +91,12 @@ class CalcMat:
 		return True
 
 	# Verifica se a matriz e da ordem passada pelo parametro order = ( linha, coluna)
+	# >>> isOrder( A , ( m , n ) )
 
 	def isOrder(self, mat, order):
+
+		if not isinstance(mat , list) or not isinstance( order, tuple ): # Verificando se e lista e tupla
+			return False
 
 		m = order[0] # Linha
 		n = order[1] # Coluna
@@ -100,20 +109,39 @@ class CalcMat:
 		else: 
 			return False
 
+	# Retorna a ordem da matriz
+	# >>> getOrder(A)
+
+	def getOrder(self, mat):
+
+		if not isinstance( mat, list ): # Verificando se e uma list
+			return False
+
+		n = len(mat[0]) # Pegando o numero de colunas na primeira linha
+
+		for i in range(len(mat)):
+			if n != len(mat[i]):
+				return False
+
+		return ( len(mat) , n ) # Retornando uma tupla m, n
+
 	# -------------------------------------------------------------------------------
 
 	# Eliminar matriz
+	# >>> delMatriz(A)
 
 	def delMatriz(self, mat):
 		if mat in self.matrizes:
 			self.matrizes.remove(mat)
 
 	# Addcionar matrizes
+	# >>> addMatriz(A)
 
 	def addMatriz(self, mat):
 		self.matrizes.append(mat)
 
 	# Pegar todas matrizes
+	# >>> getMatrizes()
 
 	def getMatrizes(self):
 		return self.matrizes

@@ -7,6 +7,7 @@ A = [ [3,4,2], [3,2,4], [3,2,4] ]
 B = [ [4,4,2], [7,2,4], [3,4,5] ]
 C = [ [6,2,2], [6,0,4], [-32,2,4] ]
 D = [ [2,6,2], [3,2,-4], [5,2,4] ]
+E = [ [3,4] , [5,6] ]
 
 # instacea 
 
@@ -22,8 +23,10 @@ print(my.getMatrizes())
 
 # Verifica se as matrizes sao de mesma ordem
 
-print(my.isSameOrder(A,B))
+print(my.isSameOrder(A,A))
 
 # Verifica se uma matris e de ordem x
 
 print(my.isOrder( A, (3,3) ))
+
+print(my.getDet2x2(E))
