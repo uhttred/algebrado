@@ -87,6 +87,22 @@ class Mat:
 					return False
 		return True
 
+	# Eliminar matriz
+
+	def delMatriz(self, mat):
+		if mat in self.matrizes:
+			self.matrizes.remove(mat)
+
+	# Addcionar matrizes
+
+	def addMatriz(self, mat):
+		self.matrizes.append(mat)
+
+	# Pegar todas matrizes
+
+	def getMatriz(self):
+		return self.matrizes
+
 
 
 
