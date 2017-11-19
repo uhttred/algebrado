@@ -19,5 +19,4 @@ my = CalcMat(C)
 
 my.addMatriz(A)
 
-print(my.getDet2x2(A))
-print(my.getDet3x3(G))
+print(my.getTransposta(F))

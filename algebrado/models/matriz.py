@@ -54,6 +54,24 @@ class CalcMat:
 
 		return p1 - p2
 
+	# Retorna a tronsposta da matriz
+	# >>> getTransposta(A)
+
+	def getTransposta(self, mat):
+
+		if not isinstance( mat, list ): # Verificando se e uma list
+			return False
+
+		m , n = self.getOrder(mat)
+
+		matT = self.getNovaMatriz( (m,n) )
+
+		for i in range(m):
+			for j in range(n):
+				matT[j][i] = mat[i][j]
+
+		return matT
+
 
 	# Soma de n Matrizes, Mesma ordem necessarias
 	# >>> getSoma(A,B,C,..,N)
@@ -69,16 +87,14 @@ class CalcMat:
 		else:
 			numMats = len(args)
 
-		if numMats > 0 and self.mesmaOrdem(self, args, islist=True):
+		if numMats > 0 and self.isSameOrder(self, args, islist=True):
 
 			# Fazendo a matriz que sera retornada
 
 			m = len(args[0])    # Numero de linhas
 			n = len(args[0][0]) # numero de colunas
 
-			sMat = [[0]*n]
-			for i in range(m-1):
-				sMat += [[0]*n]
+			sMat = self.getNovaMatriz( (m,n) )
 
 			# Somando as matrizes
 
@@ -90,13 +106,13 @@ class CalcMat:
 		else:
 			# Verifica se todas as matrizes sao de mesma ordem
 
-			if self.mesmaOrdem(self, self.matrizes, islist=True):
-				return self.soma(self, self.matrizes, islist=True)
+			if self.isSameOrder(self, self.matrizes, islist=True):
+				return self.getSoma(self, self.matrizes, islist=True)
 			return False
 
 	# Verifica se as matrizes são de mesma ordem
 	# >>> isSameOrder(A,B,..,N)
-	# >>> isSmabeOrder( [ [],[],..,[], ] islist=True)
+	# >>> isSameOrder( [ [],[],..,[], ] islist=True)
 
 	def isSameOrder(self, *args, islist=False):
 
@@ -154,6 +170,23 @@ class CalcMat:
 
 	# -------------------------------------------------------------------------------
 
+	# Cria matriz e retorna uma matriz nula
+	# >>> getNewMat((m, n))
+
+	def getNovaMatriz(self, order):
+
+		if not isinstance( order, tuple):
+			return False
+
+		newMat = [[0]*order[1]]
+
+		for i in range( order[0] - 1 ):
+			newMat += [[0]*order[1]]
+
+		return newMat
+
+
+
 	# Eliminar matriz
 	# >>> delMatriz(A)
 
@@ -172,8 +205,3 @@ class CalcMat:
 
 	def getMatrizes(self):
 		return self.matrizes
-
-
-
-
-
