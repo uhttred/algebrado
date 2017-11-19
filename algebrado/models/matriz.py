@@ -54,6 +54,22 @@ class CalcMat:
 
 		return p1 - p2
 
+	# Multiplicar matriz por um escalar, retorna mtriz
+	# >>> getMatEscalar(A,escalar)
+
+	def getMatEscalar(self, mat, esc = 1 ):
+
+		if not isinstance( mat, list ):
+			return False
+
+		m, n = self.getOrder(mat)
+
+		for i in range(m):
+			for j in range(n):
+				mat[i][j] = esc * mat[i][j]
+
+		return mat
+
 	# Retorna a tronsposta da matriz
 	# >>> getTransposta(A)
 
