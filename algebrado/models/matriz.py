@@ -1,3 +1,4 @@
+# -*- coding: utf8 -*-
 
 """
 	Resolução de exercicios base!
@@ -70,6 +71,36 @@ class CalcMat:
 
 		return mat
 
+	# Multiplicar duas matrizes
+	# >> grtMatxMat(A,B)
+
+	def getMatxMat(self, matA, matB):
+
+		# Pegando a ordem das matrizes
+		m, n = self.getOrder(matA)
+		p, q = self.getOrder(matB)
+
+		# Verificando se possivel fazer a operacao, Propriedade de Multiplicacao de Matrizes - Algebra Linear 
+		if not( n == p ):
+			return False
+
+		# Criando a Matriz nula que sera retornada
+		matC = self.getNovaMatriz( (m, q) )
+
+		for i in range(m): # Controle da Linha na mat A e C
+			for j in range(q): # Controle da coluna na mat C e B
+				for k in range(p): # Controle da coluna da mat A e da linha da mat B
+					# Dica Ageu Matheus >>> Levei o dia todo para bolar isso daqui! Melhor Depurar para perceber.
+					if k > 0:
+						matC[i][j] = matC[i][j] + ( matA[i][k] * matB[k][j] )
+					else:
+						matC[i][j] = matA[i][k] * matB[k][j]
+
+		return matC
+
+		
+
+
 	# Retorna a tronsposta da matriz
 	# >>> getTransposta(A)
 
@@ -93,7 +124,7 @@ class CalcMat:
 	# >>> getSoma(A,B,C,..,N)
 	# >>> getSoma() para somar todas as mat na instacia se de mesma ordem
 
-	def getSoma(self, *args , islist = False):
+	def getSoma(self, *args , islist=False):
 
 		# Pegando a quantidade de matrizes 
 
