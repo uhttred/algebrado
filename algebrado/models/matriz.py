@@ -55,6 +55,12 @@ class CalcMat:
 
 		return p1 - p2
 
+	# Retorna a determinante da matriz n ordem
+	# >>> getDeterminante(A)
+
+	def getDeterminante(self, mat):
+		pass
+
 	# Multiplicar matriz por um escalar, retorna mtriz
 	# >>> getMatEscalar(A,escalar)
 
@@ -98,8 +104,22 @@ class CalcMat:
 
 		return matC
 
-		
+	# Retorna a inversa da Matriz
+	# >>> getInversa(A)
 
+	def getInversa(self, mat):
+		pass
+
+	# Retorna matriz cofactor
+	# >>> getCofactor(A)
+
+	def getCofactor(self, mat):
+		pass
+	# Retorna matriz adjunta
+	# >>> getAdjunta(A)
+
+	def getAdjunta(self, mat):
+		pass
 
 	# Retorna a tronsposta da matriz
 	# >>> getTransposta(A)
@@ -231,8 +251,6 @@ class CalcMat:
 			newMat += [[0]*order[1]]
 
 		return newMat
-
-
 
 	# Eliminar matriz
 	# >>> delMatriz(A)
